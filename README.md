@@ -155,6 +155,6 @@ MonteCarlo<<< grid, threads >>>( dbeforey, daftery, ddistx, dsuccesses );
 ### Results of Monte Carlo Trials
 
 The results are visable in the [.err](https://github.com/andrew-sabin/Monte-Carlo-Simulation/blob/main/proj05/proj05.err) file, where the columns are 
-**Number of Threads**, **Number of Trials**, **Maximum Performance (MegaTrials Per Second)**, and **Probability**.
+**Number of Trials**, **Number of Threads**, **Maximum Performance (MegaTrials Per Second)**, and **Probability**.
 
 Or are visable in the PDF file.
