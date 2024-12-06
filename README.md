@@ -91,4 +91,70 @@ The results can be see in the [csv file](https://github.com/andrew-sabin/Monte-C
 And the pdf report.
 
 ## Project 5- CUDA Core Monte Carlo Simulation
-Project 5 uses CUDA Cores in order to do parallelism on different cores with a graphics card or graphics card server.
+Project 5 uses CUDA Cores in order to do parallelism on different cores with a graphics card or graphics card server. Instead of a .cpp file they are stored in .cu file for cuda cores.
+
+Instead of threads we use blocks where:
+**NUMTRIALS** - The number of trials being ran in the program.
+**BLOCKSIZE** - The number of threads per block.
+**NUMBLOCKS** - The number of blocks used in the graphics card.
+
+While there are values set on the CPU before being transferred over to the GPU:
+
+```
+for (int n = 0; n < NUMTRIALS; n++)
+	{
+		hbeforey[n] = Ranf(BEFOREY - BEFOREYDY, BEFOREY + BEFOREYDY);
+		haftery[n]  = Ranf(AFTERY - AFTERYDY,   AFTERY + AFTERYDY);
+		hdistx[n]   = Ranf(DISTX - DISTXDX,     DISTX + DISTXDX);
+	}
+```
+We still allocate memory on the graphics card with cudaMalloc():
+```
+	cudaMalloc((void**)(&dbeforey), NUMTRIALS * sizeof(float));
+	cudaMalloc((void**)(&daftery),  NUMTRIALS * sizeof(float));
+	cudaMalloc((void**)(&ddistx),   NUMTRIALS * sizeof(float));
+```
+
+And copy the values to memory:
+
+```
+	cudaMemcpy(dbeforey, hbeforey, NUMTRIALS * sizeof(float), cudaMemcpyHostToDevice);
+	cudaMemcpy(daftery,  haftery,  NUMTRIALS * sizeof(float), cudaMemcpyHostToDevice);
+	cudaMemcpy(ddistx,   hdistx,   NUMTRIALS * sizeof(float),   cudaMemcpyHostToDevice);
+```
+
+Where we then use this function:
+```
+__global__
+void
+MonteCarlo( IN float* dbeforey, IN float* daftery, IN float* ddistx, OUT int* dsuccesses)
+{
+	//unsigned int numItems = blockDim.x;		// don't need this for this project
+	//unsigned int wgNum    = blockIdx.x;		// don't need this for this project
+	//unsigned int tnum     = threadIdx.x;		// don't need this for this project
+	// "gid", the global identifier, is essentially the for-loop index:
+	unsigned int gid = blockIdx.x * blockDim.x + threadIdx.x;
+
+	...
+}
+```
+Where ___global___ means that the command is executed on the GPU but it is only callable in the Host (CPU). And instead of a for loop we will be using the global identifier (gid) to go through all the different values:
+
+```
+	float beforey = dbeforey[gid];
+	float aftery  = daftery[gid];
+	float distx   = ddistx[gid];
+```
+
+And the function is executed as:
+
+```
+MonteCarlo<<< grid, threads >>>( dbeforey, daftery, ddistx, dsuccesses );
+```
+
+### Results of Monte Carlo Trials
+
+The results are visable in the [.err](https://github.com/andrew-sabin/Monte-Carlo-Simulation/blob/main/proj05/proj05.err) file, where the columns are 
+**Number of Threads**, **Number of Trials**, **Maximum Performance (MegaTrials Per Second)**, and **Probability**.
+
+Or are visable in the PDF file.
