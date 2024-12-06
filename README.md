@@ -42,6 +42,9 @@ _vx_ - Horizontal Velocity of the ball coming off the ski jump.
 _t_ - Time to reach the group from the ski jump.
 _dx_ - Horizontal distance traveled by the ball before landing on the ground.
 
+![alt text](https://raw.githubusercontent.com/andrew-sabin/Monte-Carlo-Simulation/refs/heads/main/GolfBallEqn.png)
+Golf Equations Provided by Mike Bailey of Oregon State University.
+
 ### End Result
 
 With both projects, the values will either be printed onto a CSV file (an .err file in the case of the graphics card) or onto the console with the following results representing each column:
