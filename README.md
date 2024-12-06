@@ -86,7 +86,7 @@ done
 ```
 
 ### Results of the Monte Carlo Trials
-The results can be see in the [csv file](https://github.com/andrew-sabin/Monte-Carlo-Simulation/blob/main/proj01/proj01.csv).
+The results can be see in the [csv file](https://github.com/andrew-sabin/Monte-Carlo-Simulation/blob/main/proj01/proj01.csv) where the columns are: **Number of Threads**, **Number of Trials**, **Probability**, and **Maximum Performance (MegaTrials Per Second)**.
 
 And the pdf report.
 
