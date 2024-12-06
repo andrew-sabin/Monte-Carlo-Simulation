@@ -43,6 +43,7 @@ _t_ - Time to reach the group from the ski jump.
 _dx_ - Horizontal distance traveled by the ball before landing on the ground.
 
 ![alt text](https://raw.githubusercontent.com/andrew-sabin/Monte-Carlo-Simulation/refs/heads/main/GolfBallEqn.png)
+
 Golf Equations Provided by Mike Bailey of Oregon State University.
 
 ### End Result
