@@ -88,7 +88,7 @@ done
 ### Results of the Monte Carlo Trials
 The results can be see in the [csv file](https://github.com/andrew-sabin/Monte-Carlo-Simulation/blob/main/proj01/proj01.csv) where the columns are: **Number of Threads**, **Number of Trials**, **Probability**, and **Maximum Performance (MegaTrials Per Second)**.
 
-And the pdf report.
+And the [Report PDF File](https://github.com/andrew-sabin/Monte-Carlo-Simulation/blob/main/Proj01.pdf).
 
 ## Project 5- CUDA Core Monte Carlo Simulation
 Project 5 uses CUDA Cores in order to do parallelism on different cores with a graphics card or graphics card server. Instead of a .cpp file they are stored in .cu file for cuda cores.
@@ -157,4 +157,4 @@ MonteCarlo<<< grid, threads >>>( dbeforey, daftery, ddistx, dsuccesses );
 The results are visable in the [.err](https://github.com/andrew-sabin/Monte-Carlo-Simulation/blob/main/proj05/proj05.err) file, where the columns are 
 **Number of Trials**, **Number of Threads**, **Maximum Performance (MegaTrials Per Second)**, and **Probability**.
 
-Or are visable in the PDF file.
+They are also available in the [Report PDF File](https://github.com/andrew-sabin/Monte-Carlo-Simulation/blob/main/Proj05.pdf).
