@@ -4,7 +4,7 @@ Based on this [video](https://www.youtube.com/watch?v=_kVH8Wh7tBo) the projects 
 
 Assisted with the help of Professor Mike Bailey at Oregon State University.
 
-## General Math
+## General Math and Random Generation
 
 ### Random Generation
 Here the math will contain four constant variables:
@@ -55,6 +55,40 @@ With both projects, the values will either be printed onto a CSV file (an .err f
 
 ## Project 1- OpenMP Monte Carlo Simulation
 Project 1 uses OpenMP in order to do multithreaded parallelism on different cores with a processor.
+
+**NUMT** - Number of threads being used
+**NUMTRIALS** - Number of trials.
+
+We set the number of threads to be used with the code, where NUMT represents the amount of threads used in the program is NUMT.
+```
+omp_set_num_threads( NUMT );
+```
+
+Then the pragma is set for the for-loop used for each monte carlo trial:
+
+```
+#pragma omp parallel for default(none) shared(BeforeY, AfterY, DistX, stderr) reduction(+:numSuccesses)
+                for( int n = 0; n < NUMTRIALS; n++ )
+```
+Here we are setting omp to make all the for loops run parallel with one another, having no default for safety reasons, and the BeforeY, AfterY, and the DistX arrays being shared along with the stderr with in each thread.
+
+Loop Bash file used to create the multiple results:
+```
+#!/bin/bash
+for t in 1 2 4 6 8
+do
+  for n in 1 10 100 1000 10000 100000 500000 1000000
+  do
+     g++   proj01.cpp  -DNUMT=$t -DNUMTRIALS=$n  -o proj01  -lm  -fopenmp
+    ./proj01
+  done
+done
+```
+
+### Results of the Monte Carlo Trials
+The results can be see in the [csv file](https://github.com/andrew-sabin/Monte-Carlo-Simulation/blob/main/proj01/proj01.csv).
+
+And the pdf report.
 
 ## Project 5- CUDA Core Monte Carlo Simulation
 Project 5 uses CUDA Cores in order to do parallelism on different cores with a graphics card or graphics card server.
