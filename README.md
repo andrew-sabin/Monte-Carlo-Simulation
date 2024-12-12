@@ -1,8 +1,8 @@
 # Monte-Carlo-Simulation
 
-Based on this [video](https://www.youtube.com/watch?v=_kVH8Wh7tBo) the projects aim to simulate how many golfballs going down a ski jump will potentially make it into the hole.
-
 Assisted with the help of Professor Mike Bailey at Oregon State University.
+
+Based on this [video](https://www.youtube.com/watch?v=_kVH8Wh7tBo) the projects aim to simulate how many golfballs going down a ski jump will potentially make it into the hole.
 
 ## General Math and Random Generation
 
